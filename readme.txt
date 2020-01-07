@@ -13,12 +13,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Allows content to be injected before, within and after the loop. All content is configurable via an admin settings page; perfect for adverts.
 
 == Description ==
-
 Allows content to be injected before, within and after the loop. All content is configurable via an admin settings page; perfect for adverts.
 
-Each of the three content locations can be activated individually; location within the loop is configurable.
-
-Shortcodes are supported in Loop Injection; allows [Snippets](https://developed.azurecurve.co.uk/classicpress-plugins/snippets/) to be used.
+Each of the three content locations can be activated individually and the location within the loop is configurable. Shortcodes are supported in Loop Injection; allows [Snippets](https://developed.azurecurve.co.uk/classicpress-plugins/snippets/) to be used.
 
 == Installation ==
 To install the Loop Injection plugin:
@@ -29,6 +26,9 @@ To install the Loop Injection plugin:
 
 == Changelog ==
 Changes and feature additions for the Loop Injection plugin:
+= 1.0.1 =
+* Update azurecurve menu for easier maintenance.
+* Move require of azurecurve menu below security check.
 = 1.0.0 =
 * First version.
 
