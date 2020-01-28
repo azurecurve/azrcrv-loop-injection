@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Loop Injection
  * Description: Inject data into loop at top, middle and bottom; perfect for adverts.
- * Version: 1.0.1
+ * Version: 1.1.0
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/loop-injection
@@ -24,6 +24,10 @@ if (!defined('ABSPATH')){
 
 // include plugin menu
 require_once(dirname(__FILE__).'/pluginmenu/menu.php');
+register_activation_hook(__FILE__, 'azrcrv_create_plugin_menu_li');
+
+// include update client
+require_once(dirname(__FILE__).'/libraries/updateclient/UpdateClient.class.php');
 
 /**
  * Setup registration activation hook, actions, filters and shortcodes.
@@ -43,6 +47,7 @@ add_action('wp_enqueue_scripts', 'azrcrv_li_load_css');
 add_action('wp_enqueue_scripts', 'azrcrv_li_load_jquery');
 //add_action('the_posts', 'azrcrv_li_check_for_shortcode');
 add_action( 'the_post', 'azrcrv_li_inject_adds_in_loop' );
+add_action('plugins_loaded', 'azrcrv_li_load_languages');
 
 // add filters
 add_action( 'loop_start', 'azrcrv_li_inject_adds_before_loop' );
@@ -51,6 +56,17 @@ add_action( 'loop_end', 'azrcrv_li_inject_adds_after_loop' );
 
 // add shortcodes
 //add_shortcode('shortcode', 'shortcode_function');
+
+/**
+ * Load language files.
+ *
+ * @since 1.0.0
+ *
+ */
+function azrcrv_li_load_languages() {
+    $plugin_rel_path = basename(dirname(__FILE__)).'/languages';
+    load_plugin_textdomain('azrcrv-li', false, $plugin_rel_path);
+}
 
 /**
  * Check if shortcode on current page and then load css and jqeury.
@@ -221,7 +237,7 @@ function azrcrv_li_display_options(){
 	?>
 	<div id="azrcrv-li-general" class="wrap">
 		<fieldset>
-			<h2><?php echo esc_html(get_admin_page_title()); ?></h2>
+			<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 			
 			<?php if(isset($_GET['settings-updated'])){ ?>
 				<div class="notice notice-success is-dismissible">
@@ -454,7 +470,7 @@ function azrcrv_li_network_settings(){
 	?>
 	<div id="azrcrv-li-general" class="wrap">
 		<fieldset>
-			<h2><?php echo esc_html(get_admin_page_title()); ?></h2>
+			<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 				
 			<table class="form-table">
 			
