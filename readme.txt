@@ -1,12 +1,12 @@
 === Loop Injection ===
 
 Description:	Allows content to be injected before, within and after the loop.
-Version:		1.1.2
+Version:		1.1.3
 Tags:			loop,posts,adverts
 Author:			azurecurve
 Author URI:		https://development.azurecurve.co.uk/
 Plugin URI:		https://development.azurecurve.co.uk/classicpress-plugins/loop-injection/
-Download link:	https://github.com/azurecurve/azrcrv-loop-injection/releases/download/v1.1.2/azrcrv-loop-injection.zip
+Download link:	https://github.com/azurecurve/azrcrv-loop-injection/releases/download/v1.1.3/azrcrv-loop-injection.zip
 Donate link:	https://development.azurecurve.co.uk/support-development/
 Requires PHP:	5.6
 Requires:		1.0.0
@@ -51,6 +51,10 @@ This plugin is developed for ClassicPress, but will likely work on WordPress.
 
 # Changelog
 
+### [Version 1.1.3](https://github.com/azurecurve/azrcrv-loop-injection/releases/tag/v1.1.3)
+ * Rewrite default option creation function to resolve several bugs.
+ * Upgrade azurecurve plugin to store available plugins in options.
+ 
 ### [Version 1.1.2](https://github.com/azurecurve/azrcrv-loop-injection/releases/tag/v1.1.2)
  * Update Update Manager class to v2.0.0.
  * Update action link.
