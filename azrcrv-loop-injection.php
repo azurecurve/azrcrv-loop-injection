@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Loop Injection
  * Description: Inject data into loop at top, middle and bottom; perfect for adverts.
- * Version: 1.1.4
+ * Version: 1.2.0
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/loop-injection/
@@ -36,24 +36,21 @@ require_once(dirname(__FILE__).'/libraries/updateclient/UpdateClient.class.php')
  *
  */
 // add actions
-add_action('admin_init', 'azrcrv_li_set_default_options');
 add_action('admin_menu', 'azrcrv_li_create_admin_menu');
 add_action('admin_post_azrcrv_li_save_options', 'azrcrv_li_save_options');
 add_action('network_admin_menu', 'azrcrv_li_create_network_admin_menu');
 add_action('network_admin_edit_azrcrv_li_save_network_options', 'azrcrv_li_save_network_options');
-add_action('wp_enqueue_scripts', 'azrcrv_li_load_css');
-add_action('wp_enqueue_scripts', 'azrcrv_li_load_jquery');
-//add_action('the_posts', 'azrcrv_li_check_for_shortcode');
 add_action( 'the_post', 'azrcrv_li_inject_adds_in_loop' );
 add_action('plugins_loaded', 'azrcrv_li_load_languages');
+add_action( 'loop_start', 'azrcrv_li_inject_adds_before_loop' );
+add_action( 'loop_end', 'azrcrv_li_inject_adds_after_loop' );
+add_action('wp_enqueue_scripts', 'azrcrv_li_load_css');
+add_action('wp_enqueue_scripts', 'azrcrv_li_load_jquery');
 
 // add filters
-add_action( 'loop_start', 'azrcrv_li_inject_adds_before_loop' );
 add_filter('plugin_action_links', 'azrcrv_li_add_plugin_action_link', 10, 2);
-add_action( 'loop_end', 'azrcrv_li_inject_adds_after_loop' );
-
-// add shortcodes
-//add_shortcode('shortcode', 'shortcode_function');
+add_filter('codepotent_update_manager_image_path', 'azrcrv_li_custom_image_path');
+add_filter('codepotent_update_manager_image_url', 'azrcrv_li_custom_image_url');
 
 /**
  * Load language files.
@@ -64,45 +61,6 @@ add_action( 'loop_end', 'azrcrv_li_inject_adds_after_loop' );
 function azrcrv_li_load_languages() {
     $plugin_rel_path = basename(dirname(__FILE__)).'/languages';
     load_plugin_textdomain('loop-injection', false, $plugin_rel_path);
-}
-
-/**
- * Check if shortcode on current page and then load css and jqeury.
- *
- * @since 1.0.0
- *
- */
-function azrcrv_li_check_for_shortcode($posts){
-    if (empty($posts)){
-        return $posts;
-	}
-	
-	
-	// array of shortcodes to search for
-	$shortcodes = array(
-						'shortcode1','shortcode1'
-						);
-	
-    // loop through posts
-    $found = false;
-    foreach ($posts as $post){
-		// loop through shortcodes
-		foreach ($shortcodes as $shortcode){
-			// check the post content for the shortcode
-			if (has_shortcode($post->post_content, $shortcode)){
-				$found = true;
-				// break loop as shortcode found in page content
-				break 2;
-			}
-		}
-	}
- 
-    if ($found){
-		// as shortcode found call functions to load css and jquery
-        azrcrv_li_load_css();
-		azrcrv_li_load_jquery();
-    }
-    return $posts;
 }
 
 /**
@@ -126,16 +84,40 @@ function azrcrv_li_load_jquery(){
 }
 
 /**
- * Set default options for plugin.
+ * Custom plugin image path.
  *
- * @since 1.0.0
+ * @since 1.2.0
  *
  */
-function azrcrv_li_set_default_options($networkwide){
-	
-	$option_name = 'azrcrv-li';
-	
-	$new_options = array(
+function azrcrv_li_custom_image_path($path){
+    if (strpos($path, 'azrcrv-loop-injection') !== false){
+        $path = plugin_dir_path(__FILE__).'assets/pluginimages';
+    }
+    return $path;
+}
+
+/**
+ * Custom plugin image url.
+ *
+ * @since 1.2.0
+ *
+ */
+function azrcrv_li_custom_image_url($url){
+    if (strpos($url, 'azrcrv-loop-injection') !== false){
+        $url = plugin_dir_url(__FILE__).'assets/pluginimages';
+    }
+    return $url;
+}
+
+/**
+ * Get options including defaults.
+ *
+ * @since 1.2.0
+ *
+ */
+function azrcrv_li_get_option($option_name){
+ 
+	$defaults = array(
 						'loop_before_active' => 1,
 						'loop_within_active' => 1,
 						'loop_after_active' => 1,
@@ -143,88 +125,14 @@ function azrcrv_li_set_default_options($networkwide){
 						'loop_before_advert' => '',
 						'loop_within_advert' => '',
 						'loop_after_advert' => '',
-						'updated' => strtotime('2020-04-04'),
-						
-			);
-	
-	// set defaults for multi-site
-	if (function_exists('is_multisite') && is_multisite()){
-		// check if it is a network activation - if so, run the activation function for each blog id
-		if ($networkwide){
-			global $wpdb;
+					);
 
-			$blog_ids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
-			$original_blog_id = get_current_blog_id();
+	$options = get_option($option_name, $defaults);
 
-			foreach ($blog_ids as $blog_id){
-				switch_to_blog($blog_id);
-				
-				azrcrv_li_update_options($option_name, $new_options, false);
-			}
+	$options = wp_parse_args($options, $defaults);
 
-			switch_to_blog($original_blog_id);
-		}else{
-			azrcrv_li_update_options( $option_name, $new_options, false);
-		}
-		if (get_site_option($option_name) === false){
-			azrcrv_li_update_options($option_name, $new_options, true);
-		}
-	}
-	//set defaults for single site
-	else{
-		azrcrv_li_update_options($option_name, $new_options, false);
-	}
-}
+	return $options;
 
-/**
- * Update options.
- *
- * @since 1.1.3
- *
- */
-function azrcrv_li_update_options($option_name, $new_options, $is_network_site){
-	if ($is_network_site == true){
-		if (get_site_option($option_name) === false){
-			add_site_option($option_name, $new_options);
-		}else{
-			$options = get_site_option($option_name);
-			if (!isset($options['updated']) OR $options['updated'] < $new_options['updated'] ){
-				$options['updated'] = $new_options['updated'];
-				update_site_option($option_name, azrcrv_li_update_default_options($options, $new_options));
-			}
-		}
-	}else{
-		if (get_option($option_name) === false){
-			add_option($option_name, $new_options);
-		}else{
-			$options = get_option($option_name);
-			if (!isset($options['updated']) OR $options['updated'] < $new_options['updated'] ){
-				$options['updated'] = $new_options['updated'];
-				update_option($option_name, azrcrv_li_update_default_options($options, $new_options));
-			}
-		}
-	}
-}
-
-
-/**
- * Add default options to existing options.
- *
- * @since 1.1.3
- *
- */
-function azrcrv_li_update_default_options( &$default_options, $current_options ) {
-    $default_options = (array) $default_options;
-    $current_options = (array) $current_options;
-    $updated_options = $current_options;
-    foreach ($default_options as $key => &$value) {
-        if (is_array( $value) && isset( $updated_options[$key])){
-            $updated_options[$key] = azrcrv_li_update_default_options($value, $updated_options[$key]);
-        } else {
-			$updated_options[$key] = $value;
-        }
-    }
-    return $updated_options;
 }
 
 /**
@@ -241,7 +149,7 @@ function azrcrv_li_add_plugin_action_link($links, $file){
 	}
 
 	if ($file == $this_plugin){
-		$settings_link = '<a href="'.get_bloginfo('wpurl').'/wp-admin/admin.php?page=azrcrv-li"><img src="'.plugins_url('/pluginmenu/images/Favicon-16x16.png', __FILE__).'" style="padding-top: 2px; margin-right: -5px; height: 16px; width: 16px;" alt="azurecurve" />'.esc_html__('Settings' ,'loop-injection').'</a>';
+		$settings_link = '<a href="'.admin_url('admin.php?page=azrcrv-li').'"><img src="'.plugins_url('/pluginmenu/images/Favicon-16x16.png', __FILE__).'" style="padding-top: 2px; margin-right: -5px; height: 16px; width: 16px;" alt="azurecurve" />'.esc_html__('Settings' ,'loop-injection').'</a>';
 		array_unshift($links, $settings_link);
 	}
 
@@ -277,7 +185,7 @@ function azrcrv_li_display_options(){
     }
 	
 	// Retrieve plugin configuration options from database
-	$options = get_option('azrcrv-li');
+	$options = azrcrv_li_get_option('azrcrv-li');
 	?>
 	<div id="azrcrv-li-general" class="wrap">
 		<fieldset>
@@ -550,7 +458,7 @@ function azrcrv_li_is_plugin_active($plugin){
  */
 function azrcrv_li_inject_adds_before_loop($query){
 	
-	$options = get_option('azrcrv-li');
+	$options = azrcrv_li_get_option('azrcrv-li');
 	
 	if ($options['loop_before_active'] == 1){
 		if( $query->is_main_query() ){
@@ -568,7 +476,7 @@ function azrcrv_li_inject_adds_before_loop($query){
 function azrcrv_li_inject_adds_in_loop($post){
 	global $wp_query;
 	
-	$options = get_option('azrcrv-li');
+	$options = azrcrv_li_get_option('azrcrv-li');
 	
 	if ($options['loop_within_active'] == 1){
 
@@ -589,7 +497,7 @@ function azrcrv_li_inject_adds_in_loop($post){
  */
 function azrcrv_li_inject_adds_after_loop($query){
 	
-	$options = get_option('azrcrv-li');
+	$options = azrcrv_li_get_option('azrcrv-li');
 	if ($options['loop_after_active'] == 1){
 		if( $query->is_main_query() ){
 			echo do_shortcode(stripslashes($options['loop_after_advert']));
