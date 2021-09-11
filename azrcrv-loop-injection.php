@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Loop Injection
  * Description: Inject data into loop at top, middle and bottom; perfect for adverts.
- * Version: 1.2.1
+ * Version: 1.2.2
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/loop-injection/
@@ -45,7 +45,6 @@ add_action('plugins_loaded', 'azrcrv_li_load_languages');
 add_action( 'loop_start', 'azrcrv_li_inject_adds_before_loop' );
 add_action( 'loop_end', 'azrcrv_li_inject_adds_after_loop' );
 add_action('wp_enqueue_scripts', 'azrcrv_li_load_css');
-add_action('wp_enqueue_scripts', 'azrcrv_li_load_jquery');
 
 // add filters
 add_filter('plugin_action_links', 'azrcrv_li_add_plugin_action_link', 10, 2);
@@ -71,16 +70,6 @@ function azrcrv_li_load_languages() {
  */
 function azrcrv_li_load_css(){
 	wp_enqueue_style('azrcrv-li', plugins_url('assets/css/style.css', __FILE__), '', '1.0.0');
-}
-
-/**
- * Load JQuery.
- *
- * @since 1.0.0
- *
- */
-function azrcrv_li_load_jquery(){
-	wp_enqueue_script('azrcrv-li', plugins_url('assets/jqeury/jquery.js', __FILE__), array('jquery'), '3.9.1');
 }
 
 /**
