@@ -1,12 +1,12 @@
 === Loop Injection ===
 
 Description:	Allows content to be injected before, within and after the loop.
-Version:		1.2.2
+Version:		1.2.3
 Tags:			loop,posts,adverts
 Author:			azurecurve
 Author URI:		https://development.azurecurve.co.uk/
 Plugin URI:		https://development.azurecurve.co.uk/classicpress-plugins/loop-injection/
-Download link:	https://github.com/azurecurve/azrcrv-loop-injection/releases/download/v1.2.2/azrcrv-loop-injection.zip
+Download link:	https://github.com/azurecurve/azrcrv-loop-injection/releases/download/v1.2.3/azrcrv-loop-injection.zip
 Donate link:	https://development.azurecurve.co.uk/support-development/
 Requires PHP:	5.6
 Requires:		1.0.0
@@ -32,7 +32,7 @@ This plugin is multisite compatible; each site will need settings to be configur
 
 # Installation Instructions
 
- * Download the plugin from [GitHub](https://github.com/azurecurve/azrcrv-loop-injection/releases/latest/).
+ * Download the latest release of the plugin from [GitHub](https://github.com/azurecurve/azrcrv-loop-injection/releases/latest/).
  * Upload the entire zip file using the Plugins upload function in your ClassicPress admin panel.
  * Activate the plugin.
  * Configure relevant settings via the configuration page in the admin control panel (azurecurve menu).
@@ -42,7 +42,7 @@ This plugin is multisite compatible; each site will need settings to be configur
 # Frequently Asked Questions
 
 ### Can I translate this plugin?
-Yes, the .pot fie is in the plugins languages folder and can also be downloaded from the plugin page on https://development.azurecurve.co.uk; if you do translate this plugin, please sent the .po and .mo files to translations@azurecurve.co.uk for inclusion in the next version (full credit will be given).
+Yes, the .pot file is in the plugins languages folder; if you do translate this plugin, please sent the .po and .mo files to translations@azurecurve.co.uk for inclusion in the next version (full credit will be given).
 
 ### Is this plugin compatible with both WordPress and ClassicPress?
 This plugin is developed for ClassicPress, but will likely work on WordPress.
@@ -50,6 +50,9 @@ This plugin is developed for ClassicPress, but will likely work on WordPress.
 == Changelog ==
 
 # Changelog
+
+### [Version 1.2.3](https://github.com/azurecurve/azrcrv-loop-injection/releases/tag/v1.2.3)
+ * Update azurecurve menu.
 
 ### [Version 1.2.2](https://github.com/azurecurve/azrcrv-loop-injection/releases/tag/v1.2.2)
  * Remove unused jQuery.
@@ -98,12 +101,16 @@ This plugin is developed for ClassicPress, but will likely work on WordPress.
 
 # About azurecurve
 
-**azurecurve** was one of the first plugin developers to start developing for Classicpress; all plugins are available from [azurecurve Development](https://development.azurecurve.co.uk/) and are integrated with the [Update Manager plugin](https://codepotent.com/classicpress/plugins/update-manager/) by [CodePotent](https://codepotent.com/) for fully integrated, no hassle, updates.
+**azurecurve** was one of the first plugin developers to start developing for Classicpress; all plugins are available from [azurecurve Development](https://development.azurecurve.co.uk/) and are integrated with the [Update Manager plugin](https://directory.classicpress.net/plugins/update-manager) for fully integrated, no hassle, updates.
 
-Some of the top plugins available from **azurecurve** are:
-* [Add Twitter Cards](https://development.azurecurve.co.uk/classicpress-plugins/add-twitter-cards/)
-* [Breadcrumbs](https://development.azurecurve.co.uk/classicpress-plugins/breadcrumbs/)
-* [Series Index](https://development.azurecurve.co.uk/classicpress-plugins/series-index/)
-* [To Twitter](https://development.azurecurve.co.uk/classicpress-plugins/to-twitter/)
-* [Theme Switcher](https://development.azurecurve.co.uk/classicpress-plugins/theme-switcher/)
-* [Toggle Show/Hide](https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/)
+Some of the other plugins available from **azurecurve** are:
+ * Comment Validator - [details](https://development.azurecurve.co.uk/classicpress-plugins/comment-validator/) / [download](https://github.com/azurecurve/azrcrv-comment-validator/releases/latest/)
+ * Floating Featured Image - [details](https://development.azurecurve.co.uk/classicpress-plugins/floating-featured-image/) / [download](https://github.com/azurecurve/azrcrv-floating-featured-image/releases/latest/)
+ * Gallery From Folder - [details](https://development.azurecurve.co.uk/classicpress-plugins/gallery-from-folder/) / [download](https://github.com/azurecurve/azrcrv-gallery-from-folder/releases/latest/)
+ * Icons - [details](https://development.azurecurve.co.uk/classicpress-plugins/icons/) / [download](https://github.com/azurecurve/azrcrv-icons/releases/latest/)
+ * Insult Generator - [details](https://development.azurecurve.co.uk/classicpress-plugins/insult-generator/) / [download](https://github.com/azurecurve/azrcrv-insult-generator/releases/latest/)
+ * Markdown - [details](https://development.azurecurve.co.uk/classicpress-plugins/markdown/) / [download](https://github.com/azurecurve/azrcrv-markdown/releases/latest/)
+ * Redirect - [details](https://development.azurecurve.co.uk/classicpress-plugins/redirect/) / [download](https://github.com/azurecurve/azrcrv-redirect/releases/latest/)
+ * Remove Revisions - [details](https://development.azurecurve.co.uk/classicpress-plugins/remove-revisions/) / [download](https://github.com/azurecurve/azrcrv-remove-revisions/releases/latest/)
+ * Sidebar Login - [details](https://development.azurecurve.co.uk/classicpress-plugins/sidebar-login/) / [download](https://github.com/azurecurve/azrcrv-sidebar-login/releases/latest/)
+ * Taxonomy Order - [details](https://development.azurecurve.co.uk/classicpress-plugins/taxonomy-order/) / [download](https://github.com/azurecurve/azrcrv-taxonomy-order/releases/latest/)
