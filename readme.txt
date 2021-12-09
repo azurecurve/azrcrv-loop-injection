@@ -53,6 +53,7 @@ This plugin is developed for ClassicPress, but will likely work on WordPress.
 
 ### [Version 1.2.3](https://github.com/azurecurve/azrcrv-loop-injection/releases/tag/v1.2.3)
  * Update azurecurve menu.
+ * Update readme files.
 
 ### [Version 1.2.2](https://github.com/azurecurve/azrcrv-loop-injection/releases/tag/v1.2.2)
  * Remove unused jQuery.
