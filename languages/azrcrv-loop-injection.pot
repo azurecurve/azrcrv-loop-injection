@@ -1,0 +1,131 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Loop Injection\n"
+"POT-Creation-Date: 2021-12-27 18:04+0000\n"
+"PO-Revision-Date: 2019-02-24 18:44+0000\n"
+"Last-Translator: \n"
+"Language-Team: translate@azurecurve.co.uk\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: azrcrv-loop-injection.php:141
+msgid "Settings"
+msgstr ""
+
+#: azrcrv-loop-injection.php:158 azrcrv-loop-injection.php:395
+msgid "Loop Injection Settings"
+msgstr ""
+
+#: azrcrv-loop-injection.php:159 azrcrv-loop-injection.php:396
+msgid "Loop Injection"
+msgstr ""
+
+#: azrcrv-loop-injection.php:173
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: azrcrv-loop-injection.php:190
+msgid "Settings have been saved."
+msgstr ""
+
+#: azrcrv-loop-injection.php:204 azrcrv-loop-injection.php:429
+msgid ""
+"Loop Injection supports injection of adverts before, within and after the "
+"loop."
+msgstr ""
+
+#: azrcrv-loop-injection.php:209
+msgid "Use Network Settings"
+msgstr ""
+
+#: azrcrv-loop-injection.php:210
+msgid "Use Network Settings? The settings below will be ignored"
+msgstr ""
+
+#: azrcrv-loop-injection.php:215
+msgid "Activate Before Loop"
+msgstr ""
+
+#: azrcrv-loop-injection.php:217
+msgid "Activate advert injection before loop."
+msgstr ""
+
+#: azrcrv-loop-injection.php:221
+msgid "Advert Code Before loop"
+msgstr ""
+
+#: azrcrv-loop-injection.php:223
+msgid "Advert code to inject before loop."
+msgstr ""
+
+#: azrcrv-loop-injection.php:227
+msgid "Activate Within Loop"
+msgstr ""
+
+#: azrcrv-loop-injection.php:229
+msgid "Activate advert injection within loop."
+msgstr ""
+
+#: azrcrv-loop-injection.php:233
+msgid "Position Within Loop"
+msgstr ""
+
+#: azrcrv-loop-injection.php:235
+msgid "How many posts should be displayed before advert injection."
+msgstr ""
+
+#: azrcrv-loop-injection.php:238
+msgid "Advert Code Within loop"
+msgstr ""
+
+#: azrcrv-loop-injection.php:240
+msgid "Advert code to inject within loop."
+msgstr ""
+
+#: azrcrv-loop-injection.php:244
+msgid "Activate After Loop"
+msgstr ""
+
+#: azrcrv-loop-injection.php:246
+msgid "Activate advert injection after loop."
+msgstr ""
+
+#: azrcrv-loop-injection.php:250
+msgid "Advert Code After loop"
+msgstr ""
+
+#: azrcrv-loop-injection.php:252
+msgid "Advert code to inject after loop."
+msgstr ""
+
+#: azrcrv-loop-injection.php:273 azrcrv-loop-injection.php:413
+msgid "You do not have permissions to perform this action"
+msgstr ""
+
+#: azrcrv-loop-injection.php:433
+msgid "Settings are configured at the site level."
+msgstr ""
+
+#: libraries/updateclient/UpdateClient.class.php:191
+msgid "Compatible up to:"
+msgstr ""
+
+#: libraries/updateclient/UpdateClient.class.php:192
+msgid "Reviews"
+msgstr ""
+
+#: libraries/updateclient/UpdateClient.class.php:193
+msgid "Read all reviews"
+msgstr ""
+
+#: libraries/updateclient/UpdateClient.class.php:383
+msgid "View details"
+msgstr ""
