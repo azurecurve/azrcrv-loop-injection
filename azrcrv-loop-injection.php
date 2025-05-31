@@ -3,8 +3,9 @@
  * ------------------------------------------------------------------------------
  * Plugin Name:		Loop Injection
  * Description:		Inject data into loop at top, middle and bottom; perfect for adverts.
- * Version:			1.2.6
+ * Version:			1.2.7
  * Requires CP:		1.0
+ * Requires PHP:	7.4
  * Author:			azurecurve
  * Author URI:		https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI:		https://development.azurecurve.co.uk/classicpress-plugins/loop-injection/
